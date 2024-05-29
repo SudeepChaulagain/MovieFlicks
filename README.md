@@ -1,8 +1,2 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# MovieFlicks
+A React-based web application that allows users to explore and discover popular movies. Leveraging the TMDB API, the app displays a list of movies with their titles, release years, and brief descriptions. Users can search for specific movies by title, view detailed information about each movie, and enjoy infinite scrolling for seamless navigation.
