@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import { getPopularMovies } from "../api/index";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
@@ -59,7 +60,8 @@ const MoviesList = () => {
             MovieFlicks
           </h2>
           <p className="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">
-            Explore the whole collection of different genres of movies and enjoy!!!
+            Explore the whole collection of different genres of movies and
+            enjoy!!!
           </p>
         </div>
         <div className="flex justify-end mb-4">
@@ -75,17 +77,21 @@ const MoviesList = () => {
           </div>
         </div>
         {filteredMovies.length === 0 && (
-          <p className="text-center text-gray-500">No movies found for "{searchMovie}"</p>
+          <p className="text-center text-gray-500">
+            No movies found for {searchMovie}
+          </p>
         )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredMovies.map((movie) => (
             <div key={movie.id}>
               <div className="bg-white rounded-lg shadow-lg overflow-hidden group dark:bg-gray-800 dark:text-white">
-                <img
-                  className="w-full h-62 object-cover transition-transform duration-300 ease-in-out transform group-hover:scale-105"
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                />
+                <Link to={`/movie/${movie.id}`}>
+                  <img
+                    className="w-full h-62 object-cover transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                </Link>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-bold tracking-tight">
@@ -98,12 +104,12 @@ const MoviesList = () => {
                   <p className="mt-3 mb-4 font-light text-gray-900 dark:text-gray-300 text-left text-wrap">
                     {movie.overview}
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    to={`/movie/${movie.id}`}
                     className="rounded-md bg-blue-50 px-2 py-1 text-xs font-bold text-blue-700 ring-1 ring-inset ring-blue-700/10 "
                   >
                     Read more
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
