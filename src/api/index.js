@@ -1,7 +1,15 @@
 import axios from "axios";
 
+// API key and base URL
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
+
+/**
+ * Fetch popular movies from TMDB API.
+ *
+ * @param {number} page - The page number of the results to fetch.
+ * @returns {Object} An object containing total_pages and results array.
+ */
 
 export const getPopularMovies = async (page) => {
   try {
@@ -12,7 +20,6 @@ export const getPopularMovies = async (page) => {
       },
     });
 
-    // Directly return the results with pagination info
     return {
       total_pages: response.data.total_pages,
       results: response.data.results,
@@ -22,6 +29,13 @@ export const getPopularMovies = async (page) => {
     throw error;
   }
 };
+
+/**
+ * Fetch details of a specific movie from TMDB API.
+ *
+ * @param {Array} queryKey - The query key containing ["movie", id].
+ * @returns {Object} The movie details.
+ */
 
 export const getMovieDetails = async ({ queryKey }) => {
   const [, id] = queryKey;
